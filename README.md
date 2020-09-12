@@ -1,23 +1,23 @@
 # XML Sender
-> Este projeto e baseado nas aplicacoes com Electron [`electron`](https://www.electronjs.org/).
+> Este projeto e baseado nas aplicacões com Electron [`electron`](https://www.electronjs.org/).
 
 Com o XML Sender voce agora pode encaminhar pacotes XML via Email utilizando o seu provedor de email favorito. 
 
-Para que o `node-mailer` funcione habilite algumas permissoes em seu dispositivo caso necessario...
+Para que o `node-mailer` funcione habilite algumas permissoes em seu dispositivo caso necessário...
 
 ## Instalando no Windows .EXE
 
-* Tenha pre-instalado o `Nodejs` e `npm` como gerenciador de pacote.
-* Faca o download do executavel pelo [xmlsender](http://xmlsender--wanderpereira1.repl.co)
-* Apos a instalacao do executavel rode atraves do powershell como Admin o comando `npm install`
-note que deve conter o diretorio `node_modules` no raiz da aplicacao
-* De permissoes ao Firewall do Sistema Operacional
+* Tenha pré-instalado o `Nodejs` e `npm` como gerenciador de pacote.
+* Faça o download do executável pelo [xmlsender](http://xmlsender--wanderpereira1.repl.co)
+* Após a instalação do executável rode através do powershell como Admin o comando `npm install`
+note que deve conter o diretório `node_modules` no raiz da aplicação
+* De permissões ao Firewall do Sistema Operacional
 
 
-## Comecando
-Basta clonar esse repositorio, instalar as dependencias e comecar a usar o programa..
+## Começando
+Basta clonar esse repositorio, instalar as dependências e começar a usar o programa..
 
-O uso do gerenciador de pacotes [npm](https://www.npmjs.com/) e fortemente **strongly** recomendado, ao inves de usar `yarn`.
+O uso do gerenciador de pacotes [npm](https://www.npmjs.com/) é fortemente recomendado, ao inves de usar `yarn`.
 
 ```bash
 
@@ -29,7 +29,7 @@ cd xmlsender
 npm install
 ```
 
-### Executando aplicacao
+### Executando aplicação
 
 ```bash
 # rodando pelo gerenciador de pacote
