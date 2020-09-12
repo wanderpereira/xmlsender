@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>XML Sender App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./webkit/materialize.min.css">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link rel="stylesheet" href="styles.css">
+
+     <script src="./webkit/materialize.min.js"></script>
+     <script src="./webkit/jquery.min.js"></script>
+     <script src="./webkit/switches.js"></script>
+     
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+              <h1><i class="medium material-icons">donut_small
+              </i> Config Avançadas.
+              <a href="./ajustes.html" class="btn-floating waves-effect waves-light btn-normal blue right"><i class="material-icons">undo</i></a>
+            </h1>
+        </div>
+            <ul class="collection">
+            <li class="collection-item avatar">
+              <i class="material-icons circle purple darken-4">filter_drama</i>
+              <span class="title">Baixar</span>
+              <p>Armazene os pacotes em seu PC ou Pendrive.</p>
+              <div class="switch secondary-content">
+                <label>
+                  <script>switches(baixar, 'baixar')</script>
+                  <span class="lever"></span>
+                </label>
+              </div>
+            </li>
+            <li class="collection-item avatar">
+              <i class="material-icons circle green">folder</i>
+              <span class="title">Subpastas</span>
+              <p>Crie subpastas dentro da raiz XML Sender contendo os pacotes.</p>
+                <div class="switch secondary-content">
+                <label>
+                  <script>switches(subpastas, 'subpastas')</script>
+                  <span class="lever"></span>
+                </label>
+              </div>
+            </li>
+            <li class="collection-item avatar">
+              <i class="material-icons circle cyan">bubble_chart</i>
+              <span class="title">E-mail</span>
+              <p>Encaminhar automaticamente os pacotes gerados.</p>
+                <div class="switch secondary-content">
+                <label>
+                  <script>switches(email, 'email')</script>
+                  <span class="lever"></span>
+                </l abel>
+              </div>
+            </li>
+
+              <li class="collection-item avatar">
+                <i class="material-icons circle red">build</i>
+                <span class="title">Meu E-mail</span>
+                
+                <p>Encaminhe os pacotes com seu serviço de e-mail favorito.<br>
+                <em>Enviando como: <span id="mailer"></span></em>
+                 <a href="./smtp.html"><span class="badge blue" style="color: aliceblue;">Config.</span></a> 
+                  </p>
+                  <div class="switch secondary-content">
+                  <label>
+                    <script>switches(msmtp, 'msmtp')</script>
+                    <span class="lever"></span>
+                  </label>
+                </div>
+              </li>
+          </ul>
+    </div>
+    <script src="./webkit/avancado.js"></script>
+</body>
+</html>
