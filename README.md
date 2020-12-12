@@ -1,5 +1,5 @@
 # XML Sender
-> Este projeto e baseado nas aplicacões com Electron [`electron`](https://www.electronjs.org/).
+> Este projeto é baseado nas aplicacões com [`Electron`](https://www.electronjs.org/).
 
 Com o XML Sender voce agora pode encaminhar pacotes XML via Email utilizando o seu provedor de email favorito. 
 
