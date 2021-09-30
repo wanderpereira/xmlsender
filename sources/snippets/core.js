@@ -20,12 +20,4 @@ module.exports.core = function(){
         M.toast({html: "Habilite em: Ajustes -> Avançados -> • Email."})
         
     }
-
-    
-
-    
-    
-    
-    
- 
 }
