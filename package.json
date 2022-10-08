@@ -18,7 +18,7 @@
     "moment": "^2.24.0",
     "node-fetch": "^2.6.0",
     "node-notifier": "^7.0.0",
-    "nodemailer": "^6.4.6",
+    "nodemailer": "^6.6.1",
     "path": "^0.12.7",
     "slash": "^3.0.0",
     "upath": "^1.2.0",
