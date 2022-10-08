@@ -1,3 +1,6 @@
+const { ipcRenderer, remote, shell } = require('electron');
+const { dialog } = remote;
+
 // Recompor dados do Localstorage
 const data = JSON.parse(localStorage.getItem('ajustes'))
 if (data != null) {
@@ -6,7 +9,7 @@ if (data != null) {
     email.defaultValue = data.email,
     telefone.defaultValue = data.telefone,
     contab.defaultValue = data.contab,
-    caminho.defaultValue = data.caminho
+    caminho.defaultValue = 'C:\meuapp'
 }
 
 
@@ -32,6 +35,27 @@ const maskPhone = (elm) => {
 //Atribuindo as máscaras
 maskCNPJ(cnpj)
 maskPhone(telefone)
+
+// Botão Encontrar
+ipcRenderer.on('did-finish-load', () => {
+    
+});
+
+ipcRenderer.on('processing-did-succeed', (event, html) => {
+    shell.openExternal(`file://${html}`);
+});
+
+ipcRenderer.on('processing-did-fail', (event, error) => {
+    console.error(error);
+    alert('Failed :\'(');
+});
+
+source.addEventListener('click', () => {
+  const directory = dialog.showOpenDialog({
+      properties: ['openDirectory'],
+  });
+  console.log(directory)
+});
 
 // Botão Salvar
 save.addEventListener("click", (e) => {

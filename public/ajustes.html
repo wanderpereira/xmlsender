@@ -46,17 +46,15 @@
             </div>
             <div class="input-field col s12">
               <div class="file-field input-field">
-                <div class="file-field input-field">
-                  <div class="btn validate blue">
-                    <i class="material-icons left">folder</i>
-                    Encontrar
-                    <input id="source" type="file" webkitdirectory directory absolute>
-                  </div>
-                  <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text" placeholder="Upload one or more files">
-                  </div>
-                </div>
-            </div> 
+                    
+                <button class="btn validate blue" type="button" id="source" required>
+                  <i class="material-icons left">folder</i>
+                  Encontrar
+                </button>
+            
+              <div class="file-path-wrapper">
+                <input class="file-path validate" id="caminho" type="text" name="source" placeholder="Caminho dos Arquivos" disabled required>
+              </div>
             </div>
         </div>
                 <div class="centered">
