@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>XML Sender App</title>
+    <link rel="stylesheet" href="./css/materialize.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/materialize.min.js"></script>
+    <script>
+      const shell = require('electron').shell;
+    </script>
+    <style>
+      [type="radio"].with-gap:checked+label:after {
+  background-color: #FFA500 !important;
+}
+    </style>
+</head>
+<body>
+<div class="container">
+      <div class="row with-gap">
+        <form class="col s12" id="ajustes">
+            <h1><i class="medium material-icons">build
+            </i> Meu E-mail
+          </h1>
+          <div class="row">
+            <h6>Informe os dados abaixo: </h6>
+            <br>
+            <div class="input-field col s6">
+              <i class="material-icons prefix">email</i>
+              <input id="email" name="email" value="" type="text"  required>
+              <label for="icon_prefix">E-mail</label>
+            </div>
+            <div class="input-field col s6">
+                  <i class="material-icons prefix">https</i>
+                  <input id="senha" name="senha" value="" type="password"  required>
+                  <label for="icon_prefix">Senha</label>
+            </div>
+          </div>
+          
+          <div class="row">
+            <h6>Qual serviço deseja utilizar? </h6>
+            <p class="col s4">
+            <label>
+              <input type="radio" name="service" value="gmail" />
+              <span>Google (gmail)</span>
+            </label>
+            </p>
+            <p class="col s5">
+            <label>
+              <input type="radio" name="service" value="microsoft" />
+              <span>Microsoft (hotmail, outlook, live)</span>
+            </label>
+            </p>
+            <p class="col s3">
+            <label>
+             <input type="radio" name="service" value="yahoo"/>
+            <span>Yahoo</span>
+            </label>
+            </p>
+            <span>
+              Para o Google ative Apps menos seguros em <a onclick='shell.openExternal("https://myaccount.google.com/lesssecureapps")' style="cursor: pointer;">Minha Seguraça</a>.
+            </span>
+          </div>
+                <div class="centered">
+                  <a href="avancado.html" class="waves-effect waves-light btn blue"><i class="material-icons right">undo</i>Voltar</a>
+                  <button id="clear" class="waves-effect waves-light btn reset blue "><i class="material-icons right">format_clear</i>Limpar</button>
+                  <button id="save" class="waves-effect waves-light btn blue"><i class="material-icons right">save</i>Salvar</button>
+              </div>
+            </div>
+        </form>
+      </div>
+</div>
+</body>
+<script>
+  require('../src/pages/smtp.js')
+</script>
+</html>

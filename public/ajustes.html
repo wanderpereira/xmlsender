@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>XML Sender App</title>
+    <link rel="stylesheet" href="./css/materialize.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/materialize.min.js"></script>
+</head>
+<body>
+<div class="container">
+      <div class="row">
+        <form class="col s12" id="ajustes">
+            <h1><i class="medium material-icons">settings
+            </i> Ajustes
+            <a href="./avancado.html" class="btn blue right" data-position="right">
+              <i class="material-icons left">donut_small</i>Avançados</a>
+          </h1>
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="material-icons prefix">store</i>
+              <input id="estabelecimento" name="estabelecimento" type="text" value="">
+              <label for="icon_prefix">Estabelecimento (Nome Fantasia)</label>
+            </div>
+            <div class="input-field col s6">
+              <i class="material-icons prefix">assignment</i>
+              <input id="cnpj" name="cnpj" type="text" maxlength="18" value="">
+              <label for="icon_telephone">CNPJ</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="material-icons prefix">email</i>
+              <input id="email" name="email" type="email" value="">
+              <label for="icon_prefix">Meu E-mail</label>
+            </div>
+            <div class="input-field col s6">
+                  <i class="material-icons prefix">phone</i>
+                  <input id="telefone" name="telefone" type="text" maxlength="15" value="">
+                  <label for="icon_prefix">Telefone / Celular</label>
+            </div>
+            <div class="input-field col s12">
+              <i class="material-icons prefix">drafts</i>
+              <input id="contab" name="contabilidade" type="email" value="">
+              <label for="icon_prefix">E-mail Contabilidade</label>
+            </div>
+            <div class="input-field col s12">
+              <div class="file-field input-field">
+                <div class="file-field input-field">
+                  <div class="btn validate blue">
+                    <i class="material-icons left">folder</i>
+                    Encontrar
+                    <input id="source" type="file" webkitdirectory directory absolute>
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                  </div>
+                </div>
+            </div> 
+            </div>
+        </div>
+                <div class="centered">
+                <a href="home.html" class="waves-effect waves-light btn blue"><i class="material-icons right">undo</i>Voltar</a>
+                <button id="clear" class="waves-effect waves-light btn reset blue "><i class="material-icons right">format_clear</i>Limpar</button>
+                <button id="save" class="waves-effect waves-light btn blue"><i class="material-icons right">save</i>Salvar</button>
+              </div>
+            </div>
+        </form>
+      </div>
+</div>
+</body>
+
+<script>
+    require('../src/pages/ajustes.js')
+</script>
+</html>

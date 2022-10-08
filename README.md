@@ -35,3 +35,7 @@ npm install
 # rodando pelo gerenciador de pacote
 npm start
 ```
+Changes
+- [ x ]Aumentando a performance somente com Vanilla JS
+Retirado o uso do Jquery
+Atualizado as estruturas de pastas

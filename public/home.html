@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>XML Sender App</title>
+    <link rel="stylesheet" href="./css/materialize.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/materialize.min.js"></script>
+</head>
+<body>
+<div class="container">
+      <div class="row">
+        <form class="col s12">
+            <h1>
+              <i  class="fa fa-paper-plane"></i>
+              XML Sender
+              <a href="ajustes.html" class="waves-effect waves-light btn blue right"><i class="material-icons right">settings</i>Ajustes</a>
+            </h1>
+            <h6>
+              <li>Versão do App: 2.0
+              <li><em>&copy; 2022 Sean Softwares - Desenvolvido por Wander Pereira.</em></li>
+            </h6>
+            <br><br>
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="material-icons prefix">date_range</i>
+              <input id="inicial" name="inicial" type="text" maxlength="10">
+              <label for="icon_prefix">Data Inicial</label>
+            </div>
+            <div class="input-field col s6">
+              <i class="material-icons prefix">date_range</i>
+              <input id="final" name="final" type="text" maxlength="10">
+              <label for="icon_telephone">Data Final</label>
+            </div>
+             
+          </div>
+           
+            <div class="input-field left">
+                  <button type="submit" name="encaminha" class="waves-effect waves-dark btn blue" id="tester"><i class="material-icons right">whatshot</i>Encaminhar</button>
+                  <a name="baixar" id="armazenar" download class="waves-effect waves-light btn blue"><i class="material-icons right">filter_drama</i>Baixar</a>
+            </div>
+            
+            <div class="input-field right col s4">
+                <select class="browser-default" id="periodo">
+                <option disabled>Selecione um Período</option>
+                <option selected value="ultimomes">Último Mês</option>
+                <option value="ontem">Ontem</option>
+                <option value="hoje">Hoje</option>
+                <option value="definir">Definir Período</option>
+                </select>
+            </div>
+            
+            </div>
+        </form>
+      </div>
+</div>
+<script>
+  require('../src/pages/home.js')
+</script>
+</body>
+</html>

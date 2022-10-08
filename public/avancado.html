@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XML Sender App</title>
+    <link rel="stylesheet" href="./css/materialize.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/materialize.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <h1><i class="medium material-icons">donut_small
+        </i> Config Avançadas.
+        <a href="./ajustes.html" class="btn-floating waves-effect waves-light btn-normal blue right"><i
+            class="material-icons">undo</i></a>
+      </h1>
+    </div>
+    <ul class="collection">
+      <li class="collection-item avatar">
+        <i class="material-icons circle purple darken-4">filter_drama</i>
+        <span class="title">Baixar</span>
+        <p>Armazene os pacotes em seu PC ou Pendrive.</p>
+        <div class="switch secondary-content">
+          <label>
+            <input type="checkbox" id="baixar">
+            <span class="lever"></span>
+          </label>
+        </div>
+      </li>
+      <li class="collection-item avatar">
+        <i class="material-icons circle orange">code</i>
+        <span class="title">Segmentar Arquivos </span>
+        <p>Organize as NFes através de sua data de emissão.</p>
+        <div class="switch secondary-content">
+          <label>
+            <input type="checkbox" id="segmentar">
+            <span class="lever"></span>
+          </label>
+        </div>
+      </li>
+      <li class="collection-item avatar">
+        <i class="material-icons circle green">folder</i>
+        <span class="title">Subpastas</span>
+        <p>Crie subpastas dentro da raiz XML Sender contendo os pacotes.</p>
+        <div class="switch secondary-content">
+          <label>
+            <input type="checkbox" id="subpastas">
+            <span class="lever"></span>
+          </label>
+        </div>
+      </li>
+      <li class="collection-item avatar">
+        <i class="material-icons circle cyan">bubble_chart</i>
+        <span class="title">E-mail</span>
+        <p>Encaminhar automaticamente os pacotes gerados.</p>
+        <em id="message"></em>
+        <div class="switch secondary-content">
+          <label>
+            <input type="checkbox" id="email">
+            <span class="lever"></span>
+            </l abel>
+        </div>
+      </li>
+
+      <li class="collection-item avatar">
+        <i class="material-icons circle red">build</i>
+        <span class="title">Meu E-mail</span>
+        <p>Encaminhe os pacotes com seu serviço de e-mail favorito.<br>
+          <em id="dialog"></em>
+          <a id="confbox" href="./smtp.html">
+            <span class="badge blue" style="color: aliceblue;">Config.</span>
+          </a>
+        </p>
+        <div class="switch secondary-content">
+          <label>
+            <input type="checkbox" id="smtp">
+            <span class="lever"></span>
+          </label>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <script>
+    require('../src/pages/switches.js')
+      //require('./avancado.js')
+  </script>
+</body>
+
+</html>
