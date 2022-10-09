@@ -4,8 +4,8 @@ let mainWindow;
 
 function createWindow() {
     mainWindow = new BrowserWindow({ 
-        width: 790, 
-        height: 620, 
+        width: 780, 
+        height: 635, 
         titleBarStyle: 'hidden', 
         frame: true, 
         icon: __dirname + '/favicon.ico',

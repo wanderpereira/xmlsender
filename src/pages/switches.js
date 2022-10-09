@@ -49,16 +49,13 @@ memory.email == true ? message.textContent = `Pacote será entregue em: ${firstD
 smtp.addEventListener('change', () => {
   const validate = JSON.parse(localStorage.getItem('smtp')).email
   validate === null ? dialog.hidden=true : dialog.textContent = `Enviando como: ${validate}`
+  data.smtp == true ? confbox.hidden=false : confbox.hidden=true
+  data.smtp == true ? dialog.hidden=false : dialog.hidden=true
 })
 
 if(JSON.parse(localStorage.getItem('smtp')).email != null){
   memory.smtp == true ?  dialog.textContent = `Enviando como: ${JSON.parse(localStorage.getItem('smtp')).email}` : message.textContent=''
 }
 
-/*
-
-
-confbox.hidden=true
-//
-smtp.addEventListener('change', () => {data.smtp == true ? confbox.hidden=false : confbox.hidden=true})
-*/
+memory.smtp == true ? confbox.hidden=false : confbox.hidden=true
+memory.smtp == true ? dialog.hidden=false : dialog.hidden=true
