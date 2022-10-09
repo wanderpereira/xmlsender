@@ -1,5 +1,9 @@
-// Recompor dados do Localstorage
 const memory = JSON.parse(localStorage.getItem('avancado'))
+
+// Criando dados no Localstorage (Escape)
+if(memory === null) localStorage.setItem('avancado', JSON.stringify({baixar: false, segmentar: false, subpastas: false, email: false, smtp: false}))
+
+// Recompor dados do Localstorage
 if (memory != null) {
   baixar.checked = memory.baixar,
   segmentar.checked = memory.segmentar,
@@ -8,29 +12,49 @@ if (memory != null) {
   smtp.checked = memory.smtp
 }
 
-// Criando data para popular, por padrão data é false
-const data = {baixar: false, segmentar: false, subpastas: false, email: false,  smtp: false}
+// Definindo os dados dos switches e preenchendo com os dados do Localstorage
+const data = {baixar: memory.baixar,  segmentar: memory.segmentar,  subpastas: memory.subpastas,  email: memory.email,   smtp: memory.smtp}
+localStorage.setItem('avancado', JSON.stringify(data))
 
-// Ordenando Map com as opções de data
-const ops = [ baixar, segmentar, subpastas, email,  smtp ]
+baixar.addEventListener('change', () => { data["baixar"] = baixar.checked, localStorage.setItem("avancado", JSON.stringify(data))})
+segmentar.addEventListener('change', () => { data["segmentar"] = segmentar.checked, localStorage.setItem("avancado", JSON.stringify(data))})
+subpastas.addEventListener('change', () => { data["subpastas"] = subpastas.checked, localStorage.setItem("avancado", JSON.stringify(data))})
+email.addEventListener('change', () => { data["email"] = email.checked, localStorage.setItem("avancado", JSON.stringify(data))})
+smtp.addEventListener('change', () => { data["smtp"] = smtp.checked, localStorage.setItem("avancado", JSON.stringify(data))})
 
-// Atribuindo estados a data
-ops.map((select) => {
-  select.addEventListener('change', () => {
-    data[select.id] = select.checked
-    window.localStorage.setItem('avancado', JSON.stringify(data))
-  })
+// Gerando data
+const date = new Date();
+const firstDay = new Date(date.getFullYear(), date.getMonth()+1, 1)
+
+// Validando se Meu E-mail foi preenchido
+email.addEventListener('change', () => {
+  const validate = JSON.parse(localStorage.getItem('smtp'))
+  if(validate === null)
+  {
+    alert('Meu-Email não configurado!')  
+    email.checked = false
+    message.hidden=true
+  }
+  else
+  {
+    // Ativando mensagem de E-mail Automático 
+    message.textContent = `Pacote será entregue em: ${firstDay.toLocaleDateString()}` 
+  }
+  data.email === true ? message.hidden=false : message.hidden=true
 })
 
-var date = new Date();
-var firstDay = new Date(date.getFullYear(), date.getMonth()+1, 1)
-
+// Verificando dados do Localstorage para mensagem de E-mail Automático & Meu-email
 memory.email == true ? message.textContent = `Pacote será entregue em: ${firstDay.toLocaleDateString()}` : message.textContent=''
 
-memory.smtp == true ? confbox.hidden=false : confbox.hidden=true
-memory.smtp == true ? dialog.hidden=false : dialog.hidden=true
-memory.smtp == true ? dialog.textContent = `Enviando como: ${JSON.parse(localStorage.getItem('smtp')).email}` : dialog.textContent=''
+
+/*
+
+
 smtp.addEventListener('change', () => {
-  data.smtp == true ? confbox.hidden=false : confbox.hidden=true
-  data.smtp == true ? dialog.textContent = `Enviando como: ${JSON.parse(localStorage.getItem('smtp')).email}` : dialog.textContent=''
+  data.smtp == true ? dialog.textContent = `Enviando como: ${validate}` : dialog.textContent=''
 })
+
+confbox.hidden=true
+//
+smtp.addEventListener('change', () => {data.smtp == true ? confbox.hidden=false : confbox.hidden=true})
+*/

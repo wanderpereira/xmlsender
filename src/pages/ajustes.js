@@ -1,5 +1,6 @@
-const { ipcRenderer, remote, shell } = require('electron');
+const { remote } = require('electron');
 const { dialog } = remote;
+const upath = require ('upath');
 
 // Recompor dados do Localstorage
 const data = JSON.parse(localStorage.getItem('ajustes'))
@@ -11,8 +12,6 @@ if (data != null) {
     contab.defaultValue = data.contab,
     caminho.defaultValue = 'C:\meuapp'
 }
-
-
 
 // Mascara do CNPJ
 const maskCNPJ = (elm) => {
@@ -37,29 +36,17 @@ maskCNPJ(cnpj)
 maskPhone(telefone)
 
 // Botão Encontrar
-ipcRenderer.on('did-finish-load', () => {
-    
-});
-
-ipcRenderer.on('processing-did-succeed', (event, html) => {
-    shell.openExternal(`file://${html}`);
-});
-
-ipcRenderer.on('processing-did-fail', (event, error) => {
-    console.error(error);
-    alert('Failed :\'(');
-});
-
 source.addEventListener('click', () => {
   const directory = dialog.showOpenDialog({
-      properties: ['openDirectory'],
+    properties: ['openDirectory', 'filePath'], 
   });
-  console.log(directory)
+  caminho.value = directory
 });
 
 // Botão Salvar
 save.addEventListener("click", (e) => {
   e.preventDefault()
+  const pathin = upath.normalize(caminho.value)
   if (confirm('Deseja salvar os dados?')) {
     const data = {
       estabelecimento: estabelecimento.value,
@@ -67,7 +54,7 @@ save.addEventListener("click", (e) => {
       email: email.value,
       telefone: telefone.value,
       contab: contab.value,
-      caminho: caminho.value
+      caminho: pathin
     }
     window.localStorage.setItem('ajustes', JSON.stringify(data))
     M.toast({ html: 'Os dados foram salvos com sucesso!' })
