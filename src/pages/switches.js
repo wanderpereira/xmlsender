@@ -46,13 +46,17 @@ email.addEventListener('change', () => {
 // Verificando dados do Localstorage para mensagem de E-mail Automático & Meu-email
 memory.email == true ? message.textContent = `Pacote será entregue em: ${firstDay.toLocaleDateString()}` : message.textContent=''
 
+smtp.addEventListener('change', () => {
+  const validate = JSON.parse(localStorage.getItem('smtp')).email
+  validate === null ? dialog.hidden=true : dialog.textContent = `Enviando como: ${validate}`
+})
+
+if(JSON.parse(localStorage.getItem('smtp')).email != null){
+  memory.smtp == true ?  dialog.textContent = `Enviando como: ${JSON.parse(localStorage.getItem('smtp')).email}` : message.textContent=''
+}
 
 /*
 
-
-smtp.addEventListener('change', () => {
-  data.smtp == true ? dialog.textContent = `Enviando como: ${validate}` : dialog.textContent=''
-})
 
 confbox.hidden=true
 //
