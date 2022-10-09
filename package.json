@@ -27,7 +27,7 @@
     "zip-folder": "^1.0.0"
   },
   "devDependencies": {
-    "electron-builder": "^22.8.0",
+    "electron-builder": "^23.6.0",
     "electron-prebuilt": "^1.2.0"
   }
 }
