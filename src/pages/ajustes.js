@@ -79,5 +79,3 @@ clear.addEventListener("click", (e) => {
   else
     M.toast({ html: 'Os campos não foram limpos!' })
 });
-
-//{"estabelecimento":"teste","cnpj":"01.458.869/8000-10","email":"teste@teste.com","telefone":"(14) 98812-6585","contab":"contab@gmail.com","caminho":"/Users/wandy/Documents/syncgeneration"}

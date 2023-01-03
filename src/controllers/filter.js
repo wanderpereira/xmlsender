@@ -6,10 +6,10 @@ const {copyFile} = require('./components/copy')
 const {checkIfContainsSync} = require('./components/checkString')
 const {createZipArchive} = require('./components/zippath')
 
-var caminho = 'C:/Users/E214/Desktop/'
-var destiny = 'C:/Users/E214/Documents/xmlsender/src/controllers/teste/'
+var caminho = '/Users/wandy/Downloads/xmlsender/src/controllers/teste'
+var destiny = '/Users/wandy/xmlsender/'
 
-/*
+
 // Copia dos arquivos
 fs.readdirSync(caminho).forEach((file) => {
     if (path.extname(file) === ".xml") {
@@ -52,7 +52,8 @@ fs.readdirSync(caminho).forEach((file) => {
           }
   }
 });
-*/
+
+/*
 
 // Categorização por Ano/Mês
 // Compactando as Pastas/Arquivos
@@ -62,4 +63,6 @@ fs.readdirSync(destiny).forEach((file) => {
   if (path.extname(file) === ".xml") {
       fs.unlinkSync(destiny+file)
 }
+
 });
+*/

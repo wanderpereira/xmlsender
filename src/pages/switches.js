@@ -1,23 +1,21 @@
 const memory = JSON.parse(localStorage.getItem('avancado'))
 
 // Criando dados no Localstorage (Escape)
-if(memory === null) localStorage.setItem('avancado', JSON.stringify({baixar: false, segmentar: false, subpastas: false, email: false, smtp: false}))
+if(memory === null) localStorage.setItem('avancado', JSON.stringify({baixar: false, subpastas: false, email: false, smtp: false}))
 
 // Recompor dados do Localstorage
 if (memory != null) {
   baixar.checked = memory.baixar,
-  segmentar.checked = memory.segmentar,
   subpastas.checked = memory.subpastas,
   email.checked = memory.email,
   smtp.checked = memory.smtp
 }
 
 // Definindo os dados dos switches e preenchendo com os dados do Localstorage
-const data = {baixar: memory.baixar,  segmentar: memory.segmentar,  subpastas: memory.subpastas,  email: memory.email,   smtp: memory.smtp}
+const data = {baixar: memory.baixar,  subpastas: memory.subpastas,  email: memory.email,   smtp: memory.smtp}
 localStorage.setItem('avancado', JSON.stringify(data))
 
 baixar.addEventListener('change', () => { data["baixar"] = baixar.checked, localStorage.setItem("avancado", JSON.stringify(data))})
-segmentar.addEventListener('change', () => { data["segmentar"] = segmentar.checked, localStorage.setItem("avancado", JSON.stringify(data))})
 subpastas.addEventListener('change', () => { data["subpastas"] = subpastas.checked, localStorage.setItem("avancado", JSON.stringify(data))})
 email.addEventListener('change', () => { data["email"] = email.checked, localStorage.setItem("avancado", JSON.stringify(data))})
 smtp.addEventListener('change', () => { data["smtp"] = smtp.checked, localStorage.setItem("avancado", JSON.stringify(data))})
