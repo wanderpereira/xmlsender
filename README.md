@@ -5,19 +5,15 @@ Com o XML Sender você agora pode encaminhar pacotes XML via Email utilizando o 
 
 Para que o `node-mailer` funcione habilite algumas permissões em seu dispositivo caso necessário...
 
-## Instalando no Windows .EXE
+## Instalando no Windows
 
-* Tenha pré-instalado o `Nodejs` e `npm` como gerenciador de pacote.
 * Faça o download do executável pelo [xmlsender](http://xmlsender--wanderpereira1.repl.co)
-* Após a instalação do executável rode através do powershell como Admin o comando `npm install`
-note que deverá conter o diretório `node_modules` no raiz da aplicação
-* De permissões ao Firewall do Sistema Operacional
 
 
 ## Começando
 Basta clonar esse repositorio, instalar as dependências e começar a usar o programa..
 
-O uso do gerenciador de pacotes [npm](https://www.npmjs.com/) é fortemente recomendado, ao invés de usar `yarn`.
+Use o gerenciador de pacotes de sua preferência [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/).
 
 ```bash
 
@@ -33,9 +29,10 @@ npm install
 
 ```bash
 # rodando pelo gerenciador de pacote
-npm start
+npm start ou yarn start
 ```
 Changes
 - [ x ]Aumentando a performance somente com Vanilla JS
-Retirado o uso do Jquery
-Atualizado as estruturas de pastas
+- [ x ]Retirado o uso do Jquery
+- [ x ]Atualizado as estruturas de pastas
+- [ x ]Aprimorado os providers padrões para o envio do E-mail

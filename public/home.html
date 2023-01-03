@@ -36,7 +36,7 @@
           </div>
            
             <div class="input-field left">
-                  <button type="submit" name="encaminha" class="waves-effect waves-dark btn blue" id="tester"><i class="material-icons right">whatshot</i>Encaminhar</button>
+                  <button id="encaminha" class="waves-effect waves-dark btn blue" id="tester"><i class="material-icons right">whatshot</i>Encaminhar</button>
                   <a name="baixar" id="armazenar" download class="waves-effect waves-light btn blue"><i class="material-icons right">filter_drama</i>Baixar</a>
             </div>
             
@@ -54,8 +54,19 @@
         </form>
       </div>
 </div>
+<script src="../src/pages/home.js"></script>
 <script>
-  require('../src/pages/home.js')
+  const {CriaPasta} = require('../src/controllers/mkdir.js')
+
+// Botão Encontrar
+encaminha.addEventListener('click', (e) => {
+  e.preventDefault()
+  CriaPasta()
+});
+
+
+
+
 </script>
 </body>
 </html>

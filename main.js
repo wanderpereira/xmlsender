@@ -10,7 +10,7 @@ function createWindow() {
         frame: true, 
         icon: __dirname + '/favicon.ico',
         webPreferences: {
-            devTools: true
+            devTools: true,
         }
     });
     mainWindow.loadURL(`file://${__dirname}/public/home.html`);
