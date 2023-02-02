@@ -5,7 +5,7 @@ async function createZipArchive() {
   const outputFile = "test.zip";
   zip.addLocalFolder("./teste");
   zip.writeZip(outputFile);
-  console.log(`Created ${outputFile} successfully`);
+  console.log(`Criado ${outputFile} sucesso`);
 }
 
 module.exports = {createZipArchive}

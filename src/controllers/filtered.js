@@ -1,59 +1,55 @@
-const fs = require('fs')
-const util = require("util")
-const zip = require('file-zip')
+const fs = require("fs");
+var convert = require("xml-js");
+const { checkIfContainsSync } = require("./components/checkString");
+const { homepath } = require("./mkdir");
+const { createZipArchive } = require("./components/zippath");
 
-const { inicial, final } = require('../database/package-home.json')
-const { caminho } = require('../database/package-ajustes.json')
+// Separação por Tag
+fs.readdirSync(destiny).forEach((file) => {
+  if (path.extname(file) === ".xml") {
+    if (checkIfContainsSync(file, "CFe") === true) {
+      var xml = require("fs").readFileSync(file, "utf8");
 
-module.exports.filtro = function () {
+      var result = convert.xml2json(xml, { compact: true, spaces: 4 });
+      const filename = JSON.parse(result).CFe.infCFe._attributes.Id;
+      const datefile = JSON.parse(result).CFe.infCFe.ide.dEmi._text;
+      const datefileptbr =
+        datefile.substring(6, 8) +
+        "." +
+        datefile.substring(4, 6) +
+        "." +
+        datefile.substring(0, 4);
+      const fileraw = `${datefileptbr} - ${filename}`;
+      fs.renameSync(file, `./${fileraw}.xml`);
+    }
 
-    const ini = require('./analyzer.js')
-    ini.analise()
-
-  function formatDate(date) {
-    var d = new Date(date),
-      month = '' + (d.getMonth() + 1),
-      day = '' + d.getDate(),
-      year = d.getFullYear();
-
-    if (month.length < 2)
-      month = '0' + month;
-    if (day.length < 2)
-      day = '0' + day;
-    return [year, month, day].join('-');
+    if (checkIfContainsSync(file, "NFe") === true) {
+      var xml = require("fs").readFileSync(file, "utf8");
+      var result = convert.xml2json(xml, { compact: true, spaces: 4 });
+      const filename = JSON.parse(result).NFe.infNFe._attributes.Id;
+      const datefile = JSON.parse(result).NFe.infNFe.ide.dhEmi._text;
+      const datefileptbr =
+        datefile.substring(8, 10) +
+        "." +
+        datefile.substring(5, 7) +
+        "." +
+        datefile.substring(0, 4);
+      const fileraw = `${datefileptbr} - ${filename}`;
+      fs.renameSync(file, `./${fileraw}.xml`);
+    }
   }
+});
 
-  fs.readdir(caminho, function (err, items) {
-
-    arquivos = []
-    for (let i = 0; i < items.length; i++) {
-      filename = caminho + items[i]
-      const stat = fs.statSync(filename);
-      const mtime = new Date(util.inspect(stat.mtime));
-      let modificacao = formatDate(mtime);
-      obj = { arquivo: filename, data: modificacao }
-      arquivos[i] = obj
-    }
-
-    let archive = arquivos.filter(o => o.data >= inicial && o.data <= final)
-
-    zipCC = []
-    for (let i = 0; i < archive.length; i++) {
-      zipCC[i] = archive[i].arquivo
-    }
-
-    if(zipCC.length === 0){
-      alert('Não existe XMLs para este periodo!')
-    }else{
-      zip.zipFile(zipCC, `c:/xmlsender/${pasta}.zip`, function (err) {
-        if (err) {
-          console.log('O Zip apresentou erro: ', err)
-        } else {
-          console.log('Zipado com Sucesso!');
-        }
-      });
-    }
+/*
 
 
-  });
+// Compactando as Pastas/Arquivos
+createZipArchive()
+// Removendo os Arquivos XML
+fs.readdirSync(destiny).forEach((file) => {
+  if (path.extname(file) === ".xml") {
+      fs.unlinkSync(destiny+file)
 }
+
+});
+*/

@@ -10,7 +10,6 @@ async function copyFile(sourceDirPath, destDirPath, filename) {
     await fsp.access(destDirPath, fs.constants.W_OK);
     await fsp.copyFile(sourceFilePath, destFilePath);
 
-    console.log("File copied successfully.");
   } catch (ex) {
     if (ex.errno === -2)
       console.error(`Arquivo "${sourceFilePath}" não existe.`);

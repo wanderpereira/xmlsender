@@ -13,4 +13,4 @@ function CriaPasta() {
   }
 }
 
-module.exports = { CriaPasta };
+module.exports = { CriaPasta, homepath };

@@ -1,4 +1,4 @@
-  // Definindo as datas
+// Definindo as datas
   var date = new Date();
   var ontem = new Date(new Date().setDate(new Date().getDate() - 1)).toLocaleDateString().slice(0, 10);
   var hoje = new Date().toLocaleDateString().slice(0, 10);
@@ -71,4 +71,20 @@ setInterval( _ => {
     final: final.value
   }
   window.localStorage.setItem('home', JSON.stringify(data))
+
+// Configurando o IPC
+const home = JSON.parse(localStorage.getItem('home'))
+const ajustes = JSON.parse(localStorage.getItem('ajustes'))
+const avancado = JSON.parse(localStorage.getItem('avancado'))
+const smtp = JSON.parse(localStorage.getItem('smtp'))
+
+const ipc = {
+  home: home,
+  ajustes: ajustes,
+  avancado: avancado,
+  email: smtp
+}
+require('electron').ipcRenderer.send('database', ipc);
+
 }, 1000)
+
