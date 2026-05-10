@@ -14,8 +14,15 @@
 # database
 database.json
 
+# PocketBase
+/pb/pb_data
+/pb/*.db
+/pb/*.db-shm
+/pb/*.db-wal
+
 # misc
 .DS_Store
+.env
 .env.local
 .env.development.local
 .env.test.local

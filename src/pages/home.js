@@ -1,82 +1,114 @@
-// Definindo as datas
-  var date = new Date();
-  var ontem = new Date(new Date().setDate(new Date().getDate() - 1)).toLocaleDateString().slice(0, 10);
-  var hoje = new Date().toLocaleDateString().slice(0, 10);
-  
-  var primeiroDia_MesAnterior = new Date(date.getFullYear(), (date.getMonth()-1), 1).toLocaleDateString();
-  var ultimoDia_MesAnterior = new Date(date.getFullYear(), (date.getMonth()-1) + 1, 0).toLocaleDateString();
-  
-  // Inserindo as datas padrões dos inputs
-  inicial.defaultValue=primeiroDia_MesAnterior;
-  final.defaultValue=ultimoDia_MesAnterior;
+// Utilidades para gerenciar datas
+const DateManager = {
+  getYesterday() {
+    const date = new Date();
+    date.setDate(date.getDate() - 1);
+    return date.toLocaleDateString('pt-BR');
+  },
 
-  // Criando os estados das datas
-  periodo.addEventListener('change', function handleChange(event) {
-      let selecionado = event.target.value;
-      
-      if(selecionado == "ultimomes")
-      {
-        inicial.value = primeiroDia_MesAnterior;
-        final.value = ultimoDia_MesAnterior;
-      }
-      else if(selecionado == "ontem")
-      {
-        inicial.value = ontem;
-        final.value = ontem;
-      }
-      else if(selecionado == "hoje")
-      {
-        inicial.value = hoje;
-        final.value = hoje;
-      }
-      else if(selecionado == "definir")
-      {
-        inicial.value = "";
-        final.value = "";
-      }
-  })
+  getToday() {
+    return new Date().toLocaleDateString('pt-BR');
+  },
 
-  // Mascara da Data
-  const mascara = (elm) => {
+  getFirstDayLastMonth() {
+    const date = new Date();
+    return new Date(date.getFullYear(), date.getMonth() - 1, 1).toLocaleDateString('pt-BR');
+  },
+
+  getLastDayLastMonth() {
+    const date = new Date();
+    return new Date(date.getFullYear(), date.getMonth(), 0).toLocaleDateString('pt-BR');
+  }
+};
+
+// Inicializar valores padrões
+function initializeDateFields() {
+  const inicial = document.querySelector('[name="inicial"]');
+  const final = document.querySelector('[name="final"]');
+
+  if (!inicial || !final) return;
+
+  inicial.defaultValue = DateManager.getFirstDayLastMonth();
+  final.defaultValue = DateManager.getLastDayLastMonth();
+
+  // Listener para mudanças no período
+  const periodo = document.querySelector('[name="periodo"]');
+  if (periodo) {
+    periodo.addEventListener('change', handlePeriodoChange);
+  }
+
+  // Aplicar máscara de data
+  applyDateMask(inicial);
+  applyDateMask(final);
+}
+
+function handlePeriodoChange(event) {
+  const inicial = document.querySelector('[name="inicial"]');
+  const final = document.querySelector('[name="final"]');
+  const selecionado = event.target.value;
+
+  const dateRanges = {
+    'ultimomes': {
+      inicial: DateManager.getFirstDayLastMonth(),
+      final: DateManager.getLastDayLastMonth()
+    },
+    'ontem': {
+      inicial: DateManager.getYesterday(),
+      final: DateManager.getYesterday()
+    },
+    'hoje': {
+      inicial: DateManager.getToday(),
+      final: DateManager.getToday()
+    },
+    'definir': {
+      inicial: '',
+      final: ''
+    }
+  };
+
+  if (dateRanges[selecionado]) {
+    inicial.value = dateRanges[selecionado].inicial;
+    final.value = dateRanges[selecionado].final;
+    saveToLocalStorage();
+  }
+}
+
+// Máscara para campos de data
+function applyDateMask(elm) {
   elm.addEventListener('keypress', (e) => {
-    if(e.keyCode < 47 || e.keyCode > 57) {
+    if (e.keyCode < 47 || e.keyCode > 57) {
       e.preventDefault();
     }
-    
-    var len = elm.value.length;
-    
-    if(len !== 1 || len !== 3) {
-      if(e.keyCode == 47) {
-        e.preventDefault();
-      }
-    }
-    
-    if(len === 2) {
-      elm.value += '/';
-    }
 
-    if(len === 5) {
+    const len = elm.value.length;
+
+    if (len === 2 || len === 5) {
       elm.value += '/';
     }
   });
-};
+}
+
+// Salvar dados no localStorage
+function saveToLocalStorage() {
+  const inicial = document.querySelector('[name="inicial"]');
+  const final = document.querySelector('[name="final"]');
   
-mascara(inicial);
-mascara(final);
-
-// Armazenando os dados no LocalStorage
-setInterval( _ => {
-  const data = {
-    inicial: inicial.value,
-    final: final.value
+  if (inicial && final) {
+    const data = {
+      inicial: inicial.value,
+      final: final.value,
+      timestamp: new Date().toISOString()
+    };
+    localStorage.setItem('home', JSON.stringify(data));
   }
-  window.localStorage.setItem('home', JSON.stringify(data))
+}
 
-// Configurando o IPC
-const home = JSON.parse(localStorage.getItem('home'))
-const ajustes = JSON.parse(localStorage.getItem('ajustes'))
-const avancado = JSON.parse(localStorage.getItem('avancado'))
-const smtp = JSON.parse(localStorage.getItem('smtp'))
+// Inicializar quando o DOM estiver pronto
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeDateFields);
+} else {
+  initializeDateFields();
+}
 
 const ipc = {
   home: home,

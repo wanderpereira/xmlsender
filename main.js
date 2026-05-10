@@ -1,38 +1,53 @@
 const { app, BrowserWindow, webContents, ipcMain } = require("electron");
 const fs = require("fs");
+const path = require("path");
+const isDev = require('electron-is-dev');
 
 let mainWindow;
 
 function createWindow() {
-  mainWindow = new BrowserWindow({
+  const mainWindowOptions = {
     width: 780,
     height: 635,
     titleBarStyle: "hidden",
     frame: true,
-    icon: __dirname + "/favicon.ico",
+    icon: path.join(__dirname, "favicon.ico"),
     webPreferences: {
-      devTools: true,
+      devTools: isDev ? true : false,
+      preload: path.join(__dirname, 'preload.js'),
+      contextIsolation: true,
+      enableRemoteModule: false,
     },
-  });
-  mainWindow.loadURL(`file://${__dirname}/public/home.html`);
+  };
+
+  mainWindow = new BrowserWindow(mainWindowOptions);
+  const startUrl = `file://${path.join(__dirname, '/public/home.html')}`;
+  mainWindow.loadURL(startUrl);
   mainWindow.setMenuBarVisibility(false);
+  
   mainWindow.on("closed", () => {
     mainWindow = null;
   });
 
-  ipcMain.on('database', (event, write) => {
-    fs.writeFileSync("database.json", JSON.stringify(write));
+  // IPC Handler para salvar banco de dados com validação
+  ipcMain.handle('database:save', (event, data) => {
+    try {
+      if (!data || typeof data !== 'object') {
+        throw new Error('Invalid database format');
+      }
+      const dbPath = path.join(app.getPath('userData'), 'database.json');
+      fs.writeFileSync(dbPath, JSON.stringify(data, null, 2));
+      return { success: true, message: 'Database saved successfully' };
+    } catch (error) {
+      console.error('Error saving database:', error);
+      return { success: false, error: error.message };
+    }
   });
 
 }
 
-function handleSubmission() {
-  ipcMain.on("did-submit-form", (event) => {});
-}
-
 app.on("ready", () => {
   createWindow();
-  handleSubmission();
 });
 
 app.on("window-all-closed", () => {
