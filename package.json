@@ -1,6 +1,6 @@
 {
   "name": "xml-sender",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "productName": "XML Sender App",
   "description": "Aplicativo de envio de pacotes XML's via email com PocketBase.",
   "main": "main.js",
@@ -19,7 +19,8 @@
     "moment": "^2.29.4",
     "nodemailer": "^6.9.3",
     "pocketbase": "^0.20.0",
-    "xml-js": "^1.6.11"
+    "xml-js": "^1.6.11",
+    "xml2js": "^0.6.2"
   },
   "devDependencies": {
     "electron-builder": "^24.4.0",
