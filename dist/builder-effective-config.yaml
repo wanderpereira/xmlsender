@@ -1,0 +1,24 @@
+directories:
+  output: dist
+  buildResources: build
+appId: com.wanderpereira.xmlsender
+productName: XML Sender App
+files:
+  - filter:
+      - '**/*'
+mac:
+  target:
+    - dmg
+    - zip
+  category: public.app-category.business
+win:
+  target:
+    - nsis
+    - zip
+  publisherName: Wander Pereira
+linux:
+  target:
+    - AppImage
+    - deb
+  category: Utility
+electronVersion: 42.0.1
